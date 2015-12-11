@@ -12,12 +12,12 @@ h1, h2 {
 }
 
 h3 span {
-	color: #286090;
+	color: #fff;
 }
 
 .jumbotron {
 	border-radius: 0px;
-	background: #5fb3ce;
+	background: #484848;
 	margin-bottom: 0;
 }
 
@@ -50,12 +50,12 @@ section:last-child {
 
 .nav li a:hover,
 .nav li a:focus {
-	background: #86c5da;
+	background: #ececec;
 }
 
 .nav .active {
 	font-weight: bold;
-	background: #72bcd4;
+	border-left: 4px solid #ec1c24;
 }
 
 .nav .nav {
@@ -64,6 +64,10 @@ section:last-child {
 
 .nav .active .nav {
 	display: block;
+}
+
+.nav .active .nav > li.active{
+	border-left: 0px;
 }
 
 .nav .nav a {
@@ -80,7 +84,6 @@ section:last-child {
 .nav .nav .active:focus a {
 	font-weight: bold;
 	padding-left: 30px;
-	border-left: 5px solid black;
 }
 
 .nav .nav .active span,
