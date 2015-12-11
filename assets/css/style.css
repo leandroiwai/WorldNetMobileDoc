@@ -30,10 +30,10 @@ section {
   border-bottom: 1px solid #c1e1ec;
 }
 
-#web-development,
+/*#web-development,
 #mobile-development {
   padding-bottom: 0;
-}
+}*/
 
 section:last-child {
   border-bottom: none;
