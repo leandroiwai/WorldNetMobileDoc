@@ -123,6 +123,14 @@ footer p {
 	margin-bottom: 0;
 }
 
+pre {
+    background-color: #282B2E;
+    font-size: 125%;
+    padding: 0px 0px;
+    
+}
+
+/** Media Queries **/
 @media (min-width:1200px) {
 	.affix, 
 	.affix-bottom {
