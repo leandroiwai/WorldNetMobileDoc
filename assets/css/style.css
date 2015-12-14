@@ -17,8 +17,11 @@ h3 span {
 
 .jumbotron {
   border-radius: 0px;
-  background: #282828;
+  background: #4ec0c0;
   margin-bottom: 0;
+  height: 450px;
+  margin-top: 0px;
+  padding: 0px;
 }
 
 .jumbotron button {
@@ -133,4 +136,37 @@ pre{
   .affix-bottom {
     width: 263px;
   }
+}
+
+/* Parallax Effect */
+
+#bg {
+  background: #4ec0c0;
+  height: 450px;
+  margin-top: 50px;
+  overflow: hidden;
+}
+#l1 {
+    top: 230px !important;
+}
+#l2 {
+  top: 385px !important;
+}
+#l3 {
+    top: 30px !important;
+}
+#l4 {
+  top: 129px !important;
+}
+#l5 {
+    top: 130px !important;
+    left: 87% !important;
+}
+#l6 {
+    top: 257px !important;
+    text-align: center;
+}
+#l7 {
+  top: 310px !important;
+    left: 67% !important;
 }
