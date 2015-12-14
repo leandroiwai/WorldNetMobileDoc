@@ -30,9 +30,8 @@ section {
   border-bottom: 1px solid #c1e1ec;
 }
 
-#web-development,
-#mobile-development {
-  padding-bottom: 0;
+#sale {
+  padding-bottom: 0px;
 }
 
 section:last-child {
@@ -120,11 +119,18 @@ footer p {
   margin-bottom: 0;
 }
 
-
-pre{
+pre, pre.no-bottom{
     background: #282B2E;
-    font-size: 125%;
-    padding: 0px 0px;
+    font-size: 107%;
+    padding: 0px 0px;    
+}
+
+pre.no-bottom{    
+    margin-bottom: 0px;
+}
+
+img {
+    width:100%;
 }
 
 /** Media Queries **/
