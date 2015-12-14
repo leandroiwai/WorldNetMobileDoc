@@ -12,8 +12,8 @@ $( document ).ready(function() {
 
 /** It loads all the contents one-by-one in the index.html **/
 function loadContent(){
-    loadPage("content/introduction.html", "#web-design");
-    loadPage("content/get-started.html", "#web-development");
+    loadPage("content/introduction.html", "#introduction");
+    loadPage("content/getting-started.html", "#getting-started");
     loadPage("content/sale.html", "#sale");
 }
 
