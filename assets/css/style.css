@@ -130,6 +130,20 @@ pre{
     padding: 0px 0px;
 }
 
+pre, pre.no-bottom{
+    background: #282B2E;
+    font-size: 107%;
+    padding: 0px 0px;    
+}
+
+pre.no-bottom{    
+    margin-bottom: 0px;
+}
+
+img.tutorial-image{
+    width: 100%;
+}
+
 /** Media Queries **/
 @media (min-width:1200px) {
   .affix, 
@@ -139,7 +153,6 @@ pre{
 }
 
 /* Parallax Effect */
-
 #bg {
   background: #4ec0c0;
   height: 450px;

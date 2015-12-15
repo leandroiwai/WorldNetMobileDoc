@@ -1,0 +1,69 @@
+<h2>
+    <span class="fa fa-edit"></span>
+    Transactions
+</h2>
+
+<section id="keyed">
+    <h3>Keyed</h3>
+    <p>
+        The simples transaction you can do is the keyed transaction. If you want do a transaction without any card device, this is the transaction you are looking for.
+    </p>
+
+
+    <pre class="no-bottom"><code class="java">
+            private AndroidTerminal terminal;
+                    </code></pre>
+    <p><b>Step 1 - You will need to create a AndroidTerminal variable as a class atribute.</b></p>
+
+
+    <pre class="no-bottom"><code class="java">
+            terminal = new AndroidTerminal(this);        
+                    </code></pre>
+    <p><b>Step 2 - You will need instantiate the AndroidTerminal variable in onCreate method of your activity.</b></p>
+
+    <pre class="no-bottom"><code class="java">        
+            terminal.initWithConfiguration(this, "1007", "secretpass");
+            terminal.initDevice(DeviceEnum.NODEVICE);
+                    </code></pre>
+    <p><b>Step 3 - Once the AndroidTerminal was created, we need to configure it. in our case we will configure passing the terminalID and the password. After we need to inform which device we will use. As mentioned the keyed transaction doesn't need a card device, so we will initialize our terminal as NODEVICE, provided by the enum DeviceEnum.</b></p>
+
+
+
+
+    <pre class="no-bottom"><code class="java">
+            CoreSale sale = new CoreSale(new BigDecimal("5.30"));
+
+            sale.setCardHolderName("Test User");
+            sale.setMaskedCardNumber("4111111111111111");
+            sale.setCardCvv("123");
+            sale.setCardType("VISA");
+            sale.setExpiryDate("1215");
+            </code></pre>
+    <p><b>Step 4 - You have to create a CoreSale variable and fill it with the follow information: the card holder name, the card number, cvv, card type and card expiry date.</b></p>
+
+    <pre class="no-bottom"><code class="java">
+            terminal.processSale(sale);
+            </code></pre>
+
+    <p><b>Step 5 - call the method processSale from the AndroidTerminal object, passing the coreSale object as the parameter.</b></p>
+
+
+    <pre class="no-bottom"><code class="java">
+            @Override
+            public void onSaleResponse(CoreSaleResponse coreSaleResponse) {
+                Toast.makeText(getApplicationContext(), coreSaleResponse.getAsJsonObject(), Toast.LENGTH_SHORT).show();
+                Log.d("onSaleResponse", coreSaleResponse.getAsJsonObject());
+            }
+            </code></pre>
+    <p><b>Step 6 - If the transaction happens without problems, the method onSaleResponse will be triggered and all of the information that you need will be in the CoreSaleResponse object. At this point, you can use the information by logging or to show to user as a Toast or Snackbar.</b></p>
+
+    <pre class="no-bottom"><code class="java">
+            @Override
+            public void onError(CoreError coreError, String s) {
+                Log.d("onError", coreError.name());
+            }
+                </code></pre>
+    <p><b>A good way to know if everything was okay or not is logging the method onError.</b></p>
+
+</section>
+<!--end of #keyed-->
