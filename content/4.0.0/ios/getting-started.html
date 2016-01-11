@@ -1,0 +1,21 @@
+<h2>
+    <span class="fa fa-apple"></span>
+    Getting Started                
+</h2>
+
+<p><b>Step 1 - Copy the core-sdk.jar to the folder <i>&lt;your_project_name&gt;/app/libs</i></b></p>
+
+<pre class="no-bottom"><code class="xml">
+&lt;uses-permission android:name="android.permission.INTERNET"/&gt;
+&lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/&gt;
+        </code></pre>
+<p><b>Step 2 - Go to the AndroidManifest.xml and set these permissions.</b></p>
+
+<img class="tutorial-image" src="./content/4.0.0/ios/images/get-started-step3.jpg" alt="Get started - Step 3">
+<p><b>Step 3 - Go to the MainActivity and try do implement the interface CoreAPIListener. If it appears, we are ready to go.</b></p>
+
+<pre class="no-bottom"><code class="java">
+public class MainActivity extends AppCompatActivity implements CoreAPIListener{
+        </code></pre>
+<p><b>Step 4 - You will need to implement the interface CoreAPIListener.</b></p>
