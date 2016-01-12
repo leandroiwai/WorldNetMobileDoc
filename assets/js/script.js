@@ -25,22 +25,50 @@ $(document).ready(function() {
     });
     
     loadContent(platform, version);
+    
+    // Paralax
+    var scene = document.getElementById('scene');
+    var parallax = new Parallax(scene);
 });
 
 /** It loads all the contents one-by-one in the index.html **/
-function loadContent(platform, version){    
-    loadPage("content/" + version + "/floating-menu.html", "#nav");
+function loadContent(platform, version){
     
-    loadPage("content/" + version + "/" + platform + "/introduction.html", "#introduction");    
-    loadPage("content/" + version + "/" + platform + "/getting-started.html", "#getting-started");
-    loadPage("content/" + version + "/" + platform + "/transactions.html", "#transactions");
-    
-    loadPage("content/" + version + "/" + platform + "/download-page.html", "#download");
+    $.ajax("http://127.0.0.1:47414/content/" + version + "/menu-options.json", {
+        success: function(data) {
+            $('ul#nav').empty();
+            $("div#content").empty();
+
+            for(var i in data){
+                //console.log(data[i][0]);
+
+                var innerHtmlMenu = "<li><a href='#" + data[i][0] + "'>" + data[i][1] + "</a>";
+                $("div#content").append("<section id='" + data[i][0] + "'></section>");
+
+                loadPage("./content/" + version + "/" + platform + "/" + data[i][0] + ".html", "#" + data[i][0]); 
+
+                var sub = data[i][2];
+                if (sub.length != 0) {
+                    innerHtmlMenu += "<ul id=\"sub-nav\" class='nav'>";
+
+                    for (j = 0; j < sub.length; j++) {
+                        innerHtmlMenu += "<li><a href='#" + sub[j].toLowerCase() + "'><span class='fa fa-angle-double-right'></span>" + sub[j] + "</a></li>";
+                    }                        
+                }
+
+                $("ul#nav").append(innerHtmlMenu);                        
+            }
+        },
+        error: function() {
+            //$('#notification-bar').text('An error occurred');
+            alert("Error Json");
+        }
+    });
     
     //$('input[value=android]').closest('.btn').button('toggle');    
     
     var url =  returnURL() + "?platform=" + platform + "&version=" + version;
-    console.log(url);
+    //console.log(url);
     history.pushState("page", "caption", url);
 }
 
@@ -77,7 +105,7 @@ $(".dropdown-menu").on('click', 'li a', function () {
     $('#dropdown-version-title').html($(this).html());
     loadContent($('input[name=options]:checked').val(), $("#dropdown-version-title").text());
 });
-
+$('ul#nav').empty();
 $("#radio-group input").on('change', function () {
     loadContent($('input[name=options]:checked').val(), $("#dropdown-version-title").text());
 });
@@ -85,27 +113,12 @@ $("#radio-group input").on('change', function () {
 
 
 /** Zip file **/
-function deferredAddZip(url, filename, zip) {    
-    var deferred = $.Deferred();
-    JSZipUtils.getBinaryContent(url, function (err, data) {
-        if(err) {
-            deferred.reject(err);
-        } else {
-            zip.file(filename, data, {binary:true});
-            deferred.resolve(data);
-        }
-    });
-    return deferred;
-}
-
-
-
 function zip(){
     var zip = new JSZip();
-    
+
     var deferred = $.Deferred(),
         deferreds = [];
-    
+
     $("#download_form").find(":checked").each(function () {
         var $this = $(this);
         var url = $this.data("url");
@@ -120,3 +133,17 @@ function zip(){
         saveAs(content, "example.zip");
     });
 }
+
+function deferredAddZip(url, filename, zip) {    
+    var deferred = $.Deferred();
+    JSZipUtils.getBinaryContent(url, function (err, data) {
+        if(err) {
+            deferred.reject(err);
+        } else {
+            zip.file(filename, data, {binary:true});
+            deferred.resolve(data);
+        }
+    });
+    return deferred;
+}
+
