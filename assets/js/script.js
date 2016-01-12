@@ -33,14 +33,37 @@ $(document).ready(function() {
 
 /** It loads all the contents one-by-one in the index.html **/
 function loadContent(platform, version){
-    loadMenu(version);
     
-    //loadPage("content/" + version + "/floating-menu.html", "#nav");
-    
-    loadPage("content/" + version + "/" + platform + "/introduction.html", "#introduction");    
-    loadPage("content/" + version + "/" + platform + "/download-page.html", "#download");    
-    loadPage("content/" + version + "/" + platform + "/getting-started.html", "#getting-started");
-    loadPage("content/" + version + "/" + platform + "/transactions.html", "#transactions");
+    $.ajax("http://127.0.0.1:47414/content/" + version + "/menu-options.json", {
+        success: function(data) {
+            $('ul#nav').empty();
+            $("div#content").empty();
+
+            for(var i in data){
+                //console.log(data[i][0]);
+
+                var innerHtmlMenu = "<li><a href='#" + data[i][0] + "'>" + data[i][1] + "</a>";
+                $("div#content").append("<section id='" + data[i][0] + "'></section>");
+
+                loadPage("./content/" + version + "/" + platform + "/" + data[i][0] + ".html", "#" + data[i][0]); 
+
+                var sub = data[i][2];
+                if (sub.length != 0) {
+                    innerHtmlMenu += "<ul id=\"sub-nav\" class='nav'>";
+
+                    for (j = 0; j < sub.length; j++) {
+                        innerHtmlMenu += "<li><a href='#" + sub[j].toLowerCase() + "'><span class='fa fa-angle-double-right'></span>" + sub[j] + "</a></li>";
+                    }                        
+                }
+
+                $("ul#nav").append(innerHtmlMenu);                        
+            }
+        },
+        error: function() {
+            //$('#notification-bar').text('An error occurred');
+            alert("Error Json");
+        }
+    });
     
     //$('input[value=android]').closest('.btn').button('toggle');    
     
@@ -124,36 +147,3 @@ function deferredAddZip(url, filename, zip) {
     return deferred;
 }
 
-function loadMenu(version){
-    //event.preventDefault();
-    
-    //$("#content").append("<li><a href='#" + data[i][0] + "'>" + data[i][1] + "</a></li>");
-
-    $.ajax("http://127.0.0.1:47414/content/" + version + "/menu-options.json", {
-            success: function(data) {
-                $('ul#nav').empty();
-
-                for(var i in data){
-                    console.log(data[i][0]);
-                    
-                    var innerHtml = "<li><a href='#" + data[i][0] + "'>" + data[i][1] + "</a>";                    
-                    
-                    var sub = data[i][2];
-                    if (sub.length != 0) {
-                        innerHtml += "<ul id=\"sub-nav\" class='nav'>";
-                        
-                        for (j = 0; j < sub.length; j++) {
-                            innerHtml += "<li><a href='#" + sub[j].toLowerCase() + "'><span class='fa fa-angle-double-right'></span>" + sub[j] + "</a></li>";
-                        }                        
-                    }
-                    
-                    $("ul#nav").append(innerHtml);                        
-                }
-            },
-            error: function() {
-                //$('#notification-bar').text('An error occurred');
-                alert("Error Json");
-            }
-    });
-    
-}
