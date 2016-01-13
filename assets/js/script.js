@@ -10,30 +10,31 @@ $('#nav').affix({
 $(document).ready(function() {
     var platform = getQueryVariable("platform");
     var version = getQueryVariable("version");
-    
-    if(platform === false)
-        platform = "ios";
-    
-    if(version === false){
-        version = "4.0.0";
-    }
-    
+
+    if(!platform) platform = "ios";
+
+    if(!version) version = "4.0.0";
+
+    $('#radio-' + platform).parent('label').addClass('active').siblings('label').removeClass('active');
+
     $("#dropdown-version-title").html(version); 
-    
+
     $('[data-spy="scroll"]').each(function () {
         var $spy = $(this).scrollspy('refresh');
     });
-    
+
+    $("input[type=radio][name='options']").click(function(){
+        $(this).parent('label').addClass('active').siblings('label').removeClass('active');
+    }).on('change', function () {
+        loadContent($(this).val(), $("#dropdown-version-title").text());
+    });
+
     loadContent(platform, version);
-    
-    // Paralax
-    var scene = document.getElementById('scene');
-    var parallax = new Parallax(scene);
 });
 
 /** It loads all the contents one-by-one in the index.html **/
 function loadContent(platform, version){
-    
+
     $.ajax("content/" + version + "/menu-options.json", {
         success: function(data) {
             $('ul#nav').empty();
@@ -64,12 +65,29 @@ function loadContent(platform, version){
             alert("Error Json");
         }
     });
-    
-    //$('input[value=android]').closest('.btn').button('toggle');    
-    
+
     var url =  returnURL() + "?platform=" + platform + "&version=" + version;
     //console.log(url);
     history.pushState("page", "caption", url);
+
+    // if (platform === "android") {
+    //     $("#radio-ios").parent().removeClass("active");
+    //     $("#radio-android").parent().addClass("active");
+    //     console.log("AAAA")
+    // } else {
+    //     $("#radio-ios").parent().addClass("active");
+    //     $("#radio-android").parent().removeClass("active");
+    //     console.log("BBBB")
+    // }
+
+
+    console.log("#radio-" + platform);
+
+
+    //$("input[value=android]").attr('checked', 'checked').change(); 
+
+    //$("#radio-android").change();
+
 }
 
 function returnURL(){     
@@ -89,15 +107,12 @@ function loadPage(page, target){
 }
 
 /** Get a value from a URL **/
-function getQueryVariable(variable)
-{
-    var query = window.location.search.substring(1);
-    var vars = query.split("&");
-    for (var i=0;i<vars.length;i++) {
-        var pair = vars[i].split("=");
-        if(pair[0] == variable){return pair[1];}
-    }
-    return(false);
+function getQueryVariable(variable){
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+    });
+    return vars[variable] ? vars[variable] : false;
 }
 
 /** Update the dropdown version title **/
@@ -106,11 +121,6 @@ $(".dropdown-menu").on('click', 'li a', function () {
     loadContent($('input[name=options]:checked').val(), $("#dropdown-version-title").text());
 });
 $('ul#nav').empty();
-$("#radio-group input").on('change', function () {
-    loadContent($('input[name=options]:checked').val(), $("#dropdown-version-title").text());
-});
-
-
 
 /** Zip file **/
 function zip(){
@@ -146,4 +156,3 @@ function deferredAddZip(url, filename, zip) {
     });
     return deferred;
 }
-

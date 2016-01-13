@@ -33,9 +33,9 @@ section:last-child {
 	margin-bottom: 0px;
 }
 
-.navbar-right {
+/*.navbar-right {
 	padding-top: 8px;
-}
+}*/
 
 #logo {
     width: 220px;
@@ -200,4 +200,8 @@ img.tutorial-image{
 #l7 {
   top: 310px !important;
 	left: 67% !important;
+}
+
+.btn-group{
+    background-color: #f8f8f8;
 }
