@@ -11,8 +11,9 @@ $(document).ready(function() {
     var platform = getQueryVariable("platform");
     var version = getQueryVariable("version");
     
-    if(platform === false)
+    if(platform === false){
         platform = "ios";
+    }
     
     if(version === false){
         version = "4.0.0";
@@ -25,10 +26,6 @@ $(document).ready(function() {
     });
     
     loadContent(platform, version);
-    
-    // Paralax
-    var scene = document.getElementById('scene');
-    var parallax = new Parallax(scene);
 });
 
 /** It loads all the contents one-by-one in the index.html **/
@@ -64,8 +61,20 @@ function loadContent(platform, version){
             alert("Error Json");
         }
     });
+    //$('inputnth-child(3)').prop('checked', true);
     
-    //$('input[value=android]').closest('.btn').button('toggle');    
+    
+    //$('input[value=android]').closest('.btn').button('toggle');
+    //$('input[value=android]').prop('checked', true);
+    
+    //alert(platform);
+    
+    
+    
+    $("#radio-android").parent().removeClass("active");
+    $("#radio-ios").parent().removeClass("active");
+    
+    $("#radio-" + platform).parent().addClass("active");        
     
     var url =  returnURL() + "?platform=" + platform + "&version=" + version;
     //console.log(url);
@@ -106,7 +115,8 @@ $(".dropdown-menu").on('click', 'li a', function () {
     loadContent($('input[name=options]:checked').val(), $("#dropdown-version-title").text());
 });
 $('ul#nav').empty();
-$("#radio-group input").on('change', function () {
+$("#radio-group").on('change', function () {
+    console.log($('input:radio[name=options]:checked').val());
     loadContent($('input[name=options]:checked').val(), $("#dropdown-version-title").text());
 });
 
