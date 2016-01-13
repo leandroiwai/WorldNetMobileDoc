@@ -15,20 +15,7 @@ h3 span {
   color: #286090;
 }
 
-.jumbotron {
-  border-radius: 0px;
-  background: #4ec0c0;
-  margin-bottom: 0;
-  height: 450px;
-  margin-top: 0px;
-  padding: 0px;
-}
-
-.jumbotron button {
-  margin-top: 10px;
-}
-
-section {
+csection {
   padding: 40px 0;
   border-bottom: 1px solid #c1e1ec;
 }
@@ -40,6 +27,19 @@ section {
 
 section:last-child {
   border-bottom: none;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+.navbar-right {
+	padding-top: 8px;
+}
+
+#logo {
+    width: 220px;
+    padding: 8px 0;
 }
 
 .nav {
@@ -58,7 +58,6 @@ section:last-child {
 
 .nav .active {
   font-weight: bold;
-  background: #ececec;
 }
 
 .nav .nav {
@@ -106,11 +105,23 @@ section:last-child {
 
 .affix, 
 .affix-bottom {
-    width: 213px;
+	width: 213px;
 }
 
 .affix-bottom {
   position: absolute;
+}
+
+#content > section {
+	padding-top: 10px;
+}
+
+#content section h2 {
+	margin-top: 10px;
+}
+
+.scrollspy {
+	margin-top: 20px;
 }
 
 footer {
@@ -125,23 +136,23 @@ footer p {
 
 
 pre{
-    background: #282B2E;
-    font-size: 125%;
-    padding: 0px 0px;
+	background: #282B2E;
+	font-size: 125%;
+	padding: 0px 0px;
 }
 
 pre, pre.no-bottom{
-    background: #282B2E;
-    font-size: 107%;
-    padding: 0px 0px;    
+	background: #282B2E;
+	font-size: 107%;
+	padding: 0px 0px;    
 }
 
 pre.no-bottom{    
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 img.tutorial-image{
-    width: 100%;
+	width: 100%;
 }
 
 
@@ -155,7 +166,7 @@ img.tutorial-image{
 @media (min-width:1200px) {
   .affix, 
   .affix-bottom {
-    width: 263px;
+	width: 263px;
   }
 }
 
@@ -167,26 +178,26 @@ img.tutorial-image{
   overflow: hidden;
 }
 #l1 {
-    top: 230px !important;
+	top: 230px !important;
 }
 #l2 {
   top: 385px !important;
 }
 #l3 {
-    top: 30px !important;
+	top: 30px !important;
 }
 #l4 {
   top: 129px !important;
 }
 #l5 {
-    top: 130px !important;
-    left: 87% !important;
+	top: 130px !important;
+	left: 87% !important;
 }
 #l6 {
-    top: 257px !important;
-    text-align: center;
+	top: 257px !important;
+	text-align: center;
 }
 #l7 {
   top: 310px !important;
-    left: 67% !important;
+	left: 67% !important;
 }

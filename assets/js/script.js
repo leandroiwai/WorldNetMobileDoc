@@ -34,7 +34,7 @@ $(document).ready(function() {
 /** It loads all the contents one-by-one in the index.html **/
 function loadContent(platform, version){
     
-    $.ajax("http://127.0.0.1:47414/content/" + version + "/menu-options.json", {
+    $.ajax("content/" + version + "/menu-options.json", {
         success: function(data) {
             $('ul#nav').empty();
             $("div#content").empty();
