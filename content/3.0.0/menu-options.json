@@ -1,6 +1,6 @@
 {
     "introduction": ["introduction", "Introduction", []],
     "downloads": ["download-page", "Downloads", []],
-    "getting-started": ["getting-started", "Getting Started 3.0.0", []],
+    "getting-started": ["getting-started", "Getting Started", []],
     "transactions": ["transactions", "Transactions", ["Keyed"]]
 }
