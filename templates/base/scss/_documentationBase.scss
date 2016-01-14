@@ -1,0 +1,189 @@
+body {
+	background: #fff;
+	position: relative;
+	line-height: 1.5;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h1, h2 {
+	-weight: 700;
+}
+
+h3 span {
+	color: #286090;
+}
+
+csection {
+	padding: 40px 0;
+	border-bottom: 1px solid #c1e1ec;
+}
+
+#web-development,
+#mobile-development {
+	padding-bottom: 0;
+}
+
+section:last-child {
+	border-bottom: none;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+/*.navbar-right {
+	padding-top: 8px;
+}*/
+
+#logo {
+	width: 220px;
+	padding: 8px 0;
+}
+
+.nav {
+	background: #fff;
+}
+
+.nav a {
+	color: black;
+	font-style: italic;
+}
+
+.nav li a:hover,
+.nav li a:focus {
+	background: #ececec;
+}
+
+.nav .active {
+	font-weight: bold;
+}
+
+.nav .nav {
+	display: none;
+}
+
+.nav .active .nav {
+	display: block;
+}
+
+.nav .nav a {
+	font-weight: normal;
+	font-size: .85em;
+}
+
+.nav .nav span {
+	margin: 0 5px 0 2px;
+}
+
+.nav .nav .active a,
+.nav .nav .active:hover a,
+.nav .nav .active:focus a {
+	font-weight: bold;
+	padding-left: 30px;
+	border-left: 4px solid #ec1c24;
+}
+
+.nav .nav .active span,
+.nav .nav .active:hover span,
+.nav .nav .active:focus span {
+	display: none;
+}
+
+.application {
+	border-top: 1px solid #c1e1ec;
+}
+
+.affix-top {
+	position: relative;
+}
+
+.affix {
+	top: 20px;
+}
+
+.affix, 
+.affix-bottom {
+	width: 213px;
+}
+
+.affix-bottom {
+	position: absolute;
+}
+
+#content > section {
+	padding-top: 10px;
+}
+
+#content section h2 {
+	margin-top: 10px;
+}
+
+.scrollspy {
+	margin-top: 20px;
+}
+
+footer {
+	border-top: 1px solid #c1e1ec;
+	height: 50px;
+}
+
+footer p {
+	line-height: 50px;
+	margin-bottom: 0;
+}
+
+
+pre{
+	background: #282B2E;
+	font-size: 125%;
+	padding: 0px 0px;
+}
+
+pre, pre.no-bottom{
+	background: #282B2E;
+	font-size: 107%;
+	padding: 0px 0px;    
+}
+
+pre.no-bottom{    
+	margin-bottom: 0px;
+}
+
+img.tutorial-image{
+	width: 100%;
+}
+
+.btn.btn-radio {
+	background-color:#FFF;
+	border-color:#CCC;
+	color:#333;
+}
+.btn.btn-radio:hover {
+	background-color:#EBEBEB;
+	border-color:#ADADAD;
+	color:#333;
+}
+
+.btn.btn-radio.active {
+	background-color:#9BB4C9;
+	border-color:#285E8E;
+	color:#000;
+}
+
+.btn.btn-radio .badge {
+	background-color:#333;
+	color:#FFF;
+}
+
+
+/** Media Queries **/
+@media (min-width:1200px) {
+	.affix, 
+	.affix-bottom {
+		width: 263px;
+	}
+}
+
+.btn-group{
+	background-color: #f8f8f8;
+}
